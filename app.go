@@ -17,18 +17,6 @@ func loadTemplate(templatePath string) *template.Template {
 	return template.Must(template.ParseFS(resources, templatePath))
 }
 
-func getEnvWithDefault(name, defaultValue string) string {
-
-	// LookupEnv returns a string value for the given key if the key exists in the
-	// environment, else the second return value is false.
-	val, exists := os.LookupEnv(name)
-
-	if !exists {
-		return defaultValue
-	}
-	return val
-}
-
 func runTemplate(t *template.Template, templateFile string, writerPointer http.ResponseWriter, data interface{}) {
 	err := t.ExecuteTemplate(writerPointer, templateFile, data)
 	if err != nil {
@@ -54,9 +42,6 @@ func main() {
 	if !portExists {
 		port = "8080"
 	}
-	println("Port: " + port)
-
-	println("IP: " + ip)
 
 	http.HandleFunc("/", func(writer http.ResponseWriter, r *http.Request) {
 		data := map[string]string{

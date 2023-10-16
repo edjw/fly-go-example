@@ -1,8 +1,10 @@
-# Ed's adapted fly.io and go with live reload
+# Ed's starting Go server with live reload that deploys to Fly.io and Render
 
 A minimal Go application for [fly.io Getting Started](https://fly.io/docs/getting-started/golang/) documentation and tutorials.
 
-To get started:
+## Deployment
+
+### Fly.io
 
 1. clone this repo
 2. `flyctl launch` to launch the app on fly.io for the first time
@@ -12,6 +14,14 @@ To get started:
 6. `flyctl rsync` to sync files to the fly.io app
 7. view the deployed app with flyctl open
 
+
+### Render.com
+1. clone this repo
+2. Just push to the master branch to deploy to Render.com
+3. You can do pull request deploys to Render.com by creating a new branch and pushing to it too
+
+
+## Development
 
 In one terminal, run this to start the server:
 ```

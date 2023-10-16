@@ -22,6 +22,7 @@ func getEnvWithDefault(name, defaultValue string) string {
 	// LookupEnv returns a string value for the given key if the key exists in the
 	// environment, else the second return value is false.
 	val, exists := os.LookupEnv(name)
+
 	if !exists {
 		return defaultValue
 	}
@@ -39,6 +40,7 @@ func runTemplate(t *template.Template, templateFile string, writerPointer http.R
 func main() {
 
 	port := getEnvWithDefault("PORT", "8080")
+	println("Port: " + port)
 	env := getEnvWithDefault("GOENVIRONMENT", "development") // This relies on setting the GOENVIRONMENT variable to "development" in your .zshrc or.bashrc file
 
 	var ip string = "0.0.0.0"
@@ -46,6 +48,8 @@ func main() {
 	if env == "development" {
 		ip = "127.0.0.1"
 	}
+
+	println("IP: " + ip)
 
 	http.HandleFunc("/", func(writer http.ResponseWriter, r *http.Request) {
 		data := map[string]string{

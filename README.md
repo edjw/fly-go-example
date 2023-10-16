@@ -1,4 +1,4 @@
-# Ed's adapted fly.io and go
+# Ed's adapted fly.io and go with live reload
 
 A minimal Go application for [fly.io Getting Started](https://fly.io/docs/getting-started/golang/) documentation and tutorials.
 

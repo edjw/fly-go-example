@@ -39,15 +39,22 @@ func runTemplate(t *template.Template, templateFile string, writerPointer http.R
 
 func main() {
 
-	port := getEnvWithDefault("PORT", "8080")
-	println("Port: " + port)
-	env := getEnvWithDefault("GOENVIRONMENT", "development") // This relies on setting the GOENVIRONMENT variable to "development" in your .zshrc or.bashrc file
+	port, portExists := os.LookupEnv("PORT")
+	env, envExists := os.LookupEnv("GOENVIRONMENT")
 
-	var ip string = "0.0.0.0"
+	var ip string = "0.0.0.0" // Standard IP address on Fly and Render
 
-	if env == "development" {
+	if envExists && env == "development" {
 		ip = "127.0.0.1"
 	}
+	// For development, this relies on setting the GOENVIRONMENT variable
+	// to "development" in your .zshrc or .bashrc file with
+	// export GOENVIRONMENT=development
+
+	if !portExists {
+		port = "8080"
+	}
+	println("Port: " + port)
 
 	println("IP: " + ip)
 

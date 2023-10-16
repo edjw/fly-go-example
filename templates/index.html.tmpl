@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        h1 {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Hi {{.Name}}</h1>
+    {{ if .Region }}
+    <h2>I'm running in the {{.Region}} region</h2>
+    {{else}}
+    <h2>I'm running in some region!</h2>
+    {{end}}
+
+</body>
+
+</html>
